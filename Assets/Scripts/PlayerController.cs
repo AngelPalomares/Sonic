@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeed;
     public float climbSpeed;
-    public Rigidbody2D theRB,theRB2;
+    public Rigidbody2D theRB;
     public float JumpForce;
     public float distance;
 
@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
         {
 
             GetComponent<Rigidbody2D>().gravityScale = 0.0f;
-            theRB2.velocity = new Vector2(theRB2.velocity.x, climbSpeed * Input.GetAxis("Vertical"));
+            theRB.velocity = new Vector2(theRB.velocity.x, climbSpeed * Input.GetAxis("Vertical"));
         }
         else
         {

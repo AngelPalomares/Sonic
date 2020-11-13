@@ -259,6 +259,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 2001692661}
+  FarBG: {fileID: 270509996}
+  MiddleBG: {fileID: 99542106}
+  minHeight: -1.55
+  maxHeight: 2.55
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -1418,7 +1422,6 @@ MonoBehaviour:
   moveSpeed: 5
   climbSpeed: 2
   theRB: {fileID: 2001692663}
-  theRB2: {fileID: 2001692663}
   JumpForce: 10
   distance: 0
   groundCheck: {fileID: 1047117705}

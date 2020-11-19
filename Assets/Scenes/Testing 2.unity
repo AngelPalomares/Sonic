@@ -7038,12 +7038,12 @@ PrefabInstance:
     - target: {fileID: 7546302863440747574, guid: 85537139ce64370438ff3c0f52920054,
         type: 3}
       propertyPath: m_Offset.x
-      value: 0.121702194
+      value: -1.4448223
       objectReference: {fileID: 0}
     - target: {fileID: 7546302863440747574, guid: 85537139ce64370438ff3c0f52920054,
         type: 3}
       propertyPath: m_Size.x
-      value: 0.86882305
+      value: 4.001872
       objectReference: {fileID: 0}
     - target: {fileID: 7546302863440747574, guid: 85537139ce64370438ff3c0f52920054,
         type: 3}
@@ -7481,6 +7481,21 @@ PrefabInstance:
         type: 3}
       propertyPath: MaxHealth
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1917055630878449476, guid: 32b5b6bea34f3d544b2a28e722db2b11,
+        type: 3}
+      propertyPath: invincibleLength
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2069496930763380470, guid: 32b5b6bea34f3d544b2a28e722db2b11,
+        type: 3}
+      propertyPath: knockbackLength
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2069496930763380470, guid: 32b5b6bea34f3d544b2a28e722db2b11,
+        type: 3}
+      propertyPath: knockForce
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2069496930763380475, guid: 32b5b6bea34f3d544b2a28e722db2b11,
         type: 3}

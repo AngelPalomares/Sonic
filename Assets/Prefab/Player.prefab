@@ -179,6 +179,8 @@ MonoBehaviour:
   WhatIsLadder:
     serializedVersion: 2
     m_Bits: 1024
+  knockbackLength: 0.25
+  knockForce: 5
 --- !u!95 &2069496930763380471
 Animator:
   serializedVersion: 3
@@ -210,5 +212,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 190473716de3a164abf466d09e20b6d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 0
+  MaxHealth: 6
   CurrentHealth: 0
+  invincibleLength: 1

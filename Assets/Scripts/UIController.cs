@@ -11,6 +11,12 @@ public class UIController : MonoBehaviour
 
     public Sprite heartfull, halfheart, emptyheart;
 
+    public Text Lives;
+
+    public int counter;
+
+    public Text Gems;
+
     private void Awake()
     {
         instance = this;
@@ -18,13 +24,13 @@ public class UIController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Lives.text = counter.ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        UpdateGemCount();
     }
     public void UpdateHealthDisplay()
     {
@@ -73,5 +79,25 @@ public class UIController : MonoBehaviour
                 break;
 
         }
+    }
+
+    public void Livess()
+    {
+        counter--;
+        Lives.text = counter.ToString();
+    }
+
+    public void addlife()
+    {
+        if(LevelManager.instance.gemsCollected == 25 || LevelManager.instance.gemsCollected == 50)
+        {
+            counter++;
+            Lives.text = counter.ToString();
+        }
+    }
+
+    public void UpdateGemCount()
+    {
+        Gems.text = LevelManager.instance.gemsCollected.ToString();
     }
 }

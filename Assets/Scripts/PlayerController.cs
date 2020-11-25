@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
 
     private float knockbackCounter;
 
+    public float bounceForce;
+
     private void Awake()
     {
         instance = this;
@@ -152,5 +154,10 @@ public class PlayerController : MonoBehaviour
         knockbackCounter = knockbackLength;
         theRB.velocity = new Vector2(0f, knockForce);
         anim.SetTrigger("isHurt");
+    }
+
+    public void Bounce()
+    {
+        theRB.velocity = new Vector2(theRB.velocity.x, bounceForce);
     }
 }

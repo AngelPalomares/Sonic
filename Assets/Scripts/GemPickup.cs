@@ -45,6 +45,7 @@ public class GemPickup : MonoBehaviour
 
                 UIController.instance.addlife();
                 UIController.instance.UpdateGemCount();
+                AudioManager.instance.PlaySFX(6);
             }
 
             if(isheal)
@@ -57,6 +58,8 @@ public class GemPickup : MonoBehaviour
                     Destroy(gameObject);
 
                     Instantiate(pickupEffect, transform.position, transform.rotation);
+
+                    AudioManager.instance.PlaySFX(7);
                 }
             }
         }

@@ -35,9 +35,16 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator RespawnCo()
     {
+      
         PlayerController.instance.gameObject.SetActive(false);
 
-        yield return new WaitForSeconds(waitToRespawn);
+        yield return new WaitForSeconds(waitToRespawn - (1f / UIController.instance.FadeSpeed));
+
+        UIController.instance.FadeT0oBlack();
+
+        yield return new WaitForSeconds((1f / UIController.instance.FadeSpeed) + .2f);
+
+        UIController.instance.FadeFromBlack();
 
         PlayerController.instance.gameObject.SetActive(true);
 
@@ -48,7 +55,5 @@ public class LevelManager : MonoBehaviour
         UIController.instance.UpdateHealthDisplay();
 
         UIController.instance.Livess();
-
-        
     }
 }

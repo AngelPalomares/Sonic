@@ -43,104 +43,109 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (knockbackCounter <= 0)
+        if (!PauseMenu.instance.isPaused)
         {
-            //Movement for the Player
-            theRB.velocity = new Vector2(moveSpeed * Input.GetAxis("Horizontal"), theRB.velocity.y);
-            isGrounded = Physics2D.OverlapCircle(groundCheck.position, .2f, whatIsGround);
-            isClimbing = Physics2D.Raycast(transform.position, Vector2.up, distance, WhatIsLadder);
-
-            if (isGrounded)
+            if (knockbackCounter <= 0)
             {
-                canDoubleJump = true;
-            }
+                //Movement for the Player
+                theRB.velocity = new Vector2(moveSpeed * Input.GetAxis("Horizontal"), theRB.velocity.y);
+                isGrounded = Physics2D.OverlapCircle(groundCheck.position, .2f, whatIsGround);
+                isClimbing = Physics2D.Raycast(transform.position, Vector2.up, distance, WhatIsLadder);
 
-            //Used to determine if the player is able to jump or not
-            if (Input.GetButtonDown("Jump"))
-            {
                 if (isGrounded)
                 {
-                    theRB.velocity = new Vector2(theRB.velocity.x, JumpForce);
+                    canDoubleJump = true;
                 }
-                else
+
+                //Used to determine if the player is able to jump or not
+                if (Input.GetButtonDown("Jump"))
                 {
-                    if (canDoubleJump)
+                    if (isGrounded)
                     {
                         theRB.velocity = new Vector2(theRB.velocity.x, JumpForce);
-                        canDoubleJump = false;
+                        AudioManager.instance.PlaySFX(10);
+                    }
+                    else
+                    {
+                        if (canDoubleJump)
+                        {
+                            theRB.velocity = new Vector2(theRB.velocity.x, JumpForce);
+                            canDoubleJump = false;
+                            AudioManager.instance.PlaySFX(10);
+                        }
                     }
                 }
-            }
 
-            if (isClimbing)
-            {
-                if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+                if (isClimbing)
                 {
-                    isClimbing = true;
-                    anim.SetBool("isClimbing", isClimbing);
+                    if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+                    {
+                        isClimbing = true;
+                        anim.SetBool("isClimbing", isClimbing);
+                    }
                 }
-            }
 
-            if (isClimbing == true)
-            {
-
-                GetComponent<Rigidbody2D>().gravityScale = 0.0f;
-                theRB.velocity = new Vector2(theRB.velocity.x, climbSpeed * Input.GetAxis("Vertical"));
-                if (isClimbing == true && isGrounded)
+                if (isClimbing == true)
                 {
 
                     GetComponent<Rigidbody2D>().gravityScale = 0.0f;
                     theRB.velocity = new Vector2(theRB.velocity.x, climbSpeed * Input.GetAxis("Vertical"));
+                    if (isClimbing == true && isGrounded)
+                    {
+
+                        GetComponent<Rigidbody2D>().gravityScale = 0.0f;
+                        theRB.velocity = new Vector2(theRB.velocity.x, climbSpeed * Input.GetAxis("Vertical"));
+                    }
+                    else
+                    {
+                        anim.SetBool("isClimbing", isClimbing);
+                        GetComponent<Rigidbody2D>().gravityScale = 0.0f;
+                    }
                 }
                 else
                 {
                     anim.SetBool("isClimbing", isClimbing);
                     GetComponent<Rigidbody2D>().gravityScale = 4.5f;
                 }
+
+
+                //Switches the Player from left to right or right to left
+                if (theRB.velocity.x < 0)
+                {
+                    theSR.flipX = true;
+                }
+                else if (theRB.velocity.x > 0)
+                {
+                    theSR.flipX = false;
+                }
+
+                //Used to give the player a crouch animation
+                if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+                {
+                    anim.SetBool("isPressed", true);
+                    moveSpeed = 0;
+                    JumpForce = 0;
+                    Debug.Log("S button is pressed");
+                }
+                else if (Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.DownArrow))
+                {
+                    anim.SetBool("isPressed", false);
+                    moveSpeed = 5;
+                    JumpForce = 10;
+                    Debug.Log("S button is up");
+                }
             }
             else
             {
-                anim.SetBool("isClimbing", isClimbing);
-                GetComponent<Rigidbody2D>().gravityScale = 4.5f;
-            }
-
-
-            //Switches the Player from left to right or right to left
-            if (theRB.velocity.x < 0)
-            {
-                theSR.flipX = true;
-            }
-            else if (theRB.velocity.x > 0)
-            {
-                theSR.flipX = false;
-            }
-
-            //Used to give the player a crouch animation
-            if(Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                anim.SetBool("isPressed", true);
-                moveSpeed = 0;
-                JumpForce = 0;
-                Debug.Log("S button is pressed");
-            }
-            else if(Input.GetKeyUp(KeyCode.S)|| Input.GetKeyUp(KeyCode.DownArrow))
-            {
-                anim.SetBool("isPressed", false);
-                moveSpeed = 5;
-                JumpForce = 10;
-                Debug.Log("S button is up");
-            }
-        }
-        else
-        {
-            knockbackCounter -= Time.deltaTime;
-            if(!theSR.flipX)
-            {
-                theRB.velocity = new Vector2(-knockForce, theRB.velocity.y);
-            }
-            else
-            {
-                theRB.velocity = new Vector2(knockForce, theRB.velocity.y);
+                knockbackCounter -= Time.deltaTime;
+                if (!theSR.flipX)
+                {
+                    theRB.velocity = new Vector2(-knockForce, theRB.velocity.y);
+                }
+                else
+                {
+                    theRB.velocity = new Vector2(knockForce, theRB.velocity.y);
+                }
             }
         }
         anim.SetFloat("moveSpeed", Mathf.Abs(theRB.velocity.x));

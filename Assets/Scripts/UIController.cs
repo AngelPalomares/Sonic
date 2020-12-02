@@ -17,6 +17,12 @@ public class UIController : MonoBehaviour
 
     public Text Gems;
 
+    public Image Fadescreen;
+
+    public float FadeSpeed;
+
+    private bool FadeToBlack, FadeFromWhite;
+
     private void Awake()
     {
         instance = this;
@@ -25,12 +31,30 @@ public class UIController : MonoBehaviour
     void Start()
     {
         Lives.text = counter.ToString();
+        UpdateGemCount();
+        FadeFromBlack();
     }
 
     // Update is called once per frame
     void Update()
     {
-        UpdateGemCount();
+        if(FadeToBlack)
+        {
+            Fadescreen.color = new Color(Fadescreen.color.r, Fadescreen.color.g, Fadescreen.color.b, Mathf.MoveTowards(Fadescreen.color.a, 1f, FadeSpeed * Time.deltaTime));
+            if(Fadescreen.color.a == 1f)
+            {
+                FadeToBlack = false;
+            }    
+        }
+        
+        if(FadeFromWhite)
+        {
+            Fadescreen.color = new Color(Fadescreen.color.r, Fadescreen.color.g, Fadescreen.color.b, Mathf.MoveTowards(Fadescreen.color.a, 0f, FadeSpeed * Time.deltaTime));
+            if (Fadescreen.color.a == 0f)
+            {
+                FadeFromWhite = true;
+            }
+        }
     }
     public void UpdateHealthDisplay()
     {
@@ -100,4 +124,17 @@ public class UIController : MonoBehaviour
     {
         Gems.text = LevelManager.instance.gemsCollected.ToString();
     }
+
+    public void FadeT0oBlack()
+    {
+        FadeToBlack = true;
+        FadeFromWhite = false;
+    }
+
+    public void FadeFromBlack()
+    {
+        FadeFromWhite = true;
+        FadeToBlack = false;
+    }
+
 }

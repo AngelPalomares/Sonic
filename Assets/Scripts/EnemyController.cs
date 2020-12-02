@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    public static EnemyController instance;
+
     public float moveSpeed;
 
     public Transform leftpoint, rightPoint;
@@ -19,6 +21,13 @@ public class EnemyController : MonoBehaviour
     private float moveCount, WaitCount;
 
     private Animator anim;
+
+    public int health;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -38,48 +47,56 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (moveCount > 0)
+        if (health != 0)
         {
-            moveCount -= Time.deltaTime;
-
-            if (movingRight)
+            if (moveCount > 0)
             {
-                theRB.velocity = new Vector2(moveSpeed, theRB.velocity.y);
+                moveCount -= Time.deltaTime;
 
-                theSR.flipX = true;
-
-                if (transform.position.x > rightPoint.position.x)
+                if (movingRight)
                 {
-                    movingRight = false;
+                    theRB.velocity = new Vector2(moveSpeed, theRB.velocity.y);
+
+                    theSR.flipX = true;
+
+                    if (transform.position.x > rightPoint.position.x)
+                    {
+                        movingRight = false;
+                    }
                 }
-            }
-            else
-            {
-                theRB.velocity = new Vector2(-moveSpeed, theRB.velocity.y);
-
-                theSR.flipX = false;
-
-
-                if (transform.position.x < leftpoint.position.x)
+                else
                 {
-                    movingRight = true;
-                }
-            }
+                    theRB.velocity = new Vector2(-moveSpeed, theRB.velocity.y);
 
-            if(moveCount <= 0)
-            {
-                WaitCount = Random.Range(waitTime * .75f, waitTime * 1.25f);
+                    theSR.flipX = false;
+
+
+                    if (transform.position.x < leftpoint.position.x)
+                    {
+                        movingRight = true;
+                    }
+                }
+
+                if (moveCount <= 0)
+                {
+                    WaitCount = Random.Range(waitTime * .75f, waitTime * 1.25f);
+                }
+                anim.SetBool("Moving", true);
             }
-            anim.SetBool("Moving", true);
-        }else if (WaitCount > 0)
+            else if (WaitCount > 0)
+            {
+                WaitCount -= Time.deltaTime;
+                theRB.velocity = new Vector2(0f, theRB.velocity.y);
+                if (WaitCount <= 0)
+                {
+                    moveCount = Random.Range(movetime * .75f, waitTime * .75f);
+                }
+                anim.SetBool("Moving", false);
+            }
+        }
+        else
         {
-            WaitCount -= Time.deltaTime;
-            theRB.velocity = new Vector2(0f, theRB.velocity.y);
-            if(WaitCount <= 0)
-            {
-                moveCount = Random.Range(movetime * .75f, waitTime * .75f);
-            }
-            anim.SetBool("Moving", false);
+            Destroy(gameObject);
         }
     }
 }

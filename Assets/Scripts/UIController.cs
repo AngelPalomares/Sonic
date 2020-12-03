@@ -23,6 +23,8 @@ public class UIController : MonoBehaviour
 
     private bool FadeToBlack, FadeFromWhite;
 
+    public GameObject levelCompleteText;
+
     private void Awake()
     {
         instance = this;

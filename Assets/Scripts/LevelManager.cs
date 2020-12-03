@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -10,6 +11,12 @@ public class LevelManager : MonoBehaviour
     public float waitToRespawn;
 
     public int gemsCollected;
+
+    public int LevelToLoad;
+
+    public int LevelMusic;
+
+    public int levelendmusic;
 
     private void Awake()
     {
@@ -20,6 +27,7 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        AudioManager.instance.PlayVGM(LevelMusic);
     }
 
     // Update is called once per frame
@@ -56,4 +64,28 @@ public class LevelManager : MonoBehaviour
 
         UIController.instance.Livess();
     }
+
+    public void ENdLevel()
+    {
+        StartCoroutine(EndLevelCO());
+    }
+
+    public IEnumerator EndLevelCO()
+    {
+        AudioManager.instance.PlayVGM(levelendmusic);
+        PlayerController.instance.StopInput = true;
+
+        CameraController.instance.stopFollow = true;
+
+        UIController.instance.levelCompleteText.SetActive(true);
+
+        yield return new WaitForSeconds(1.5f);
+
+        UIController.instance.FadeT0oBlack();
+
+        yield return new WaitForSeconds((1f / UIController.instance.FadeSpeed) + .25f);
+
+        SceneManager.LoadScene(LevelToLoad);
+    }
+
 }

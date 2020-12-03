@@ -6,9 +6,9 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
 
-    public AudioSource[] soundEffects;
+    public AudioSource[] soundEffects, VGM;
 
-    public AudioSource bgm, LevelEndMusic;
+    //public AudioSource bgm, LevelEndMusic;
 
     private void Awake()
     {
@@ -33,5 +33,12 @@ public class AudioManager : MonoBehaviour
         soundEffects[soundToPlay].pitch = Random.Range(.8f, 1.1f);
 
         soundEffects[soundToPlay].Play();
+    }
+
+    public void PlayVGM(int playvgm)
+    {
+        VGM[playvgm].Stop();
+
+        VGM[playvgm].Play();
     }
 }

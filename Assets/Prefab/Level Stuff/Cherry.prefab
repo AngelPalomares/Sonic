@@ -114,6 +114,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGem: 0
   isheal: 1
+  pickupEffect: {fileID: 7501596586697135908, guid: 314e5ff5f7508684a9d17c64d481e0e1,
+    type: 3}
 --- !u!95 &1740284500150814662
 Animator:
   serializedVersion: 3

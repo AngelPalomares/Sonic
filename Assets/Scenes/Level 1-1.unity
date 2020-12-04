@@ -3057,12 +3057,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cherry
       objectReference: {fileID: 0}
-    - target: {fileID: 1740284500150814663, guid: 91017143121ef4049bfe1c13ddd9415a,
-        type: 3}
-      propertyPath: pickupEffect
-      value: 
-      objectReference: {fileID: 7501596586697135908, guid: 314e5ff5f7508684a9d17c64d481e0e1,
-        type: 3}
     - target: {fileID: 1740284500150814666, guid: 91017143121ef4049bfe1c13ddd9415a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16535,7 +16529,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7989403737067288805, guid: 6cc14dbcf2edd6e4ba122b912b452674,
         type: 3}
-      propertyPath: levelendmusic
+      propertyPath: LevelToLoad
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7989403737262310786, guid: 6cc14dbcf2edd6e4ba122b912b452674,

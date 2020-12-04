@@ -314,7 +314,7 @@ MonoBehaviour:
   - {fileID: 2955687805362349428}
   - {fileID: 2955687805618131745}
   - {fileID: 2955687804828119887}
-  VGM:
+  BGM:
   - {fileID: 2955687806711786985}
   - {fileID: 2955687806444789169}
   - {fileID: 2955687804783214645}
@@ -1559,7 +1559,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: bfaf43c0dfe33994fa2ce257ba1e2df6, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.823
   m_Pitch: 1
   Loop: 1
   Mute: 0

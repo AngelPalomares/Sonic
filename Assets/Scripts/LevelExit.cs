@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class LevelExit : MonoBehaviour
 {
-    public int levelsoun;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +20,7 @@ public class LevelExit : MonoBehaviour
     {
         if(collision.tag == "Player")
         {
+            PlayerController.instance.isGrounded = true;
             LevelManager.instance.ENdLevel();
         }
     }

@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     public float JumpForce;
     public float distance;
 
-    private bool isGrounded;
+    public bool isGrounded;
     public Transform groundCheck;
     public LayerMask whatIsGround;
     public LayerMask WhatIsLadder;

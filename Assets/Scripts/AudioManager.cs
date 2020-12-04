@@ -6,7 +6,9 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
 
-    public AudioSource[] soundEffects, VGM;
+    public AudioSource[] soundEffects;
+
+    public AudioSource[] BGM;
 
     //public AudioSource bgm, LevelEndMusic;
 
@@ -35,10 +37,10 @@ public class AudioManager : MonoBehaviour
         soundEffects[soundToPlay].Play();
     }
 
-    public void PlayVGM(int playvgm)
+    public void PlayBGM(int playBGM)
     {
-        VGM[playvgm].Stop();
+        BGM[playBGM].Stop();
 
-        VGM[playvgm].Play();
+        BGM[playBGM].Play();
     }
 }

@@ -16,8 +16,6 @@ public class LevelManager : MonoBehaviour
 
     public int LevelMusic;
 
-    public int levelendmusic;
-
     private void Awake()
     {
         instance = this;
@@ -27,7 +25,7 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        AudioManager.instance.PlayVGM(LevelMusic);
+        AudioManager.instance.PlayBGM(LevelMusic);
     }
 
     // Update is called once per frame
@@ -72,7 +70,8 @@ public class LevelManager : MonoBehaviour
 
     public IEnumerator EndLevelCO()
     {
-        AudioManager.instance.PlayVGM(levelendmusic);
+        AudioManager.instance.PlayBGM(3);
+
         PlayerController.instance.StopInput = true;
 
         CameraController.instance.stopFollow = true;
@@ -84,6 +83,8 @@ public class LevelManager : MonoBehaviour
         UIController.instance.FadeT0oBlack();
 
         yield return new WaitForSeconds((1f / UIController.instance.FadeSpeed) + .25f);
+
+        yield return new WaitForSeconds(2f);
 
         SceneManager.LoadScene(LevelToLoad);
     }

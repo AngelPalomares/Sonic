@@ -8,6 +8,10 @@ public class LS_Player : MonoBehaviour
 
     public float movespeed = 10f;
 
+    private bool LevelLoading;
+
+    public LSManager Manager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +24,7 @@ public class LS_Player : MonoBehaviour
 
         transform.position = Vector3.MoveTowards(transform.position, currentPoint.transform.position, movespeed * Time.deltaTime);
 
-        if (Vector3.Distance(transform.position, currentPoint.transform.position) < .1f)
+        if (Vector3.Distance(transform.position, currentPoint.transform.position) < .1f && !LevelLoading)
         {
 
 
@@ -55,11 +59,22 @@ public class LS_Player : MonoBehaviour
                     SetNextPoint(currentPoint.down);
                 }
             }
+
+            if(currentPoint.islevel && currentPoint.leveltoload != ""  && !currentPoint.islocked)
+            {
+                LevelSelectUiCOntroller.instance.ShowInformation(currentPoint);
+                if(Input.GetButtonDown("Jump"))
+                {
+                    LevelLoading = true;
+                    Manager.LoadLevel();
+                }
+            }
         }
     }
 
     public void SetNextPoint(MapPoint nextpoint)
     {
         currentPoint = nextpoint;
+        LevelSelectUiCOntroller.instance.HideInformation();
     }
 }

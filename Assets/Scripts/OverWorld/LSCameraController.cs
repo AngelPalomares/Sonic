@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class LSCameraController : MonoBehaviour
 {
+    public Vector2 minPos, maxPos;
+
+    public Transform target;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -11,8 +16,11 @@ public class LSCameraController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        
+        float Xpos = Mathf.Clamp(target.position.x, minPos.x, maxPos.x);
+        float Ypos = Mathf.Clamp(target.position.y, minPos.y, maxPos.y);
+
+        transform.position = new Vector3(Xpos, Ypos, transform.position.z);
     }
 }

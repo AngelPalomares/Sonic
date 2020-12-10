@@ -9839,6 +9839,11 @@ PrefabInstance:
       propertyPath: minHeight
       value: -6
       objectReference: {fileID: 0}
+    - target: {fileID: 7989403737067288805, guid: 6cc14dbcf2edd6e4ba122b912b452674,
+        type: 3}
+      propertyPath: LevelToLoad
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7989403737262310786, guid: 6cc14dbcf2edd6e4ba122b912b452674,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -10675,7 +10680,7 @@ Transform:
   - {fileID: 659677628}
   - {fileID: 1129316495}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1351348851 stripped
 Transform:

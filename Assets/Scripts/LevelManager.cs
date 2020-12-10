@@ -12,7 +12,7 @@ public class LevelManager : MonoBehaviour
 
     public int gemsCollected;
 
-    public int LevelToLoad;
+    public string LevelToLoad;
 
     public int LevelMusic;
 
@@ -85,6 +85,8 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSeconds((1f / UIController.instance.FadeSpeed) + .25f);
 
         yield return new WaitForSeconds(2f);
+
+        PlayerPrefs.SetInt(SceneManager.GetActiveScene().name + "_unlocked", 1);
 
         SceneManager.LoadScene(LevelToLoad);
     }

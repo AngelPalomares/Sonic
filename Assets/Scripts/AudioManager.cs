@@ -8,7 +8,11 @@ public class AudioManager : MonoBehaviour
 
     public AudioSource[] soundEffects;
 
-    public AudioSource[] BGM;
+    public AudioSource StartMusic;
+
+    public AudioSource EndMusic;
+
+    //public AudioSource[] BGM;
 
     //public AudioSource bgm, LevelEndMusic;
 
@@ -37,10 +41,18 @@ public class AudioManager : MonoBehaviour
         soundEffects[soundToPlay].Play();
     }
 
+    /*
     public void PlayBGM(int playBGM)
     {
         BGM[playBGM].Stop();
 
         BGM[playBGM].Play();
+    }
+    */
+
+    public void LevelEndMusic()
+    {
+        StartMusic.Stop();
+        EndMusic.Play();
     }
 }

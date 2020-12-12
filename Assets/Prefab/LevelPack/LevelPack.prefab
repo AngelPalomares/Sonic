@@ -304,7 +304,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waitToRespawn: 2
   gemsCollected: 0
-  LevelToLoad: 2
+  LevelToLoad: Level_Select
   LevelMusic: 1
 --- !u!1 &7989403737083056042
 GameObject:
@@ -2141,12 +2141,12 @@ PrefabInstance:
     - target: {fileID: 2069496930763380475, guid: 32b5b6bea34f3d544b2a28e722db2b11,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -19.51
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 2069496930763380475, guid: 32b5b6bea34f3d544b2a28e722db2b11,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.99
+      value: -3.85
       objectReference: {fileID: 0}
     - target: {fileID: 2069496930763380475, guid: 32b5b6bea34f3d544b2a28e722db2b11,
         type: 3}

@@ -146,8 +146,8 @@ MonoBehaviour:
   islevel: 1
   islocked: 1
   leveltoload: 
-  leveltoCheck: 
-  LevelName: 
+  leveltoCheck: Level 1-2
+  LevelName: What is this level
   gemsCollected: 0
   totalGems: 0
   BestTime: 0

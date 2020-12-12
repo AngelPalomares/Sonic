@@ -559,6 +559,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2955687805091062705, guid: 4d37ec368f8ef734a9a276be62b07e1c,
+        type: 3}
+      propertyPath: StartMusic
+      value: 
+      objectReference: {fileID: 1904664423}
+    - target: {fileID: 2955687805091062705, guid: 4d37ec368f8ef734a9a276be62b07e1c,
+        type: 3}
+      propertyPath: EndMusic
+      value: 
+      objectReference: {fileID: 1454064150}
     - target: {fileID: 2955687805091062706, guid: 4d37ec368f8ef734a9a276be62b07e1c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -613,6 +623,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2955687806444789169, guid: 4d37ec368f8ef734a9a276be62b07e1c,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d37ec368f8ef734a9a276be62b07e1c, type: 3}
@@ -2508,6 +2523,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1425767104}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &1454064150 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2955687805624904051, guid: 4d37ec368f8ef734a9a276be62b07e1c,
+    type: 3}
+  m_PrefabInstance: {fileID: 304510590}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1553564519
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3044,6 +3065,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1456688599491004755, guid: 5e0431cf9c40fc3409b63b687f03cd5d,
     type: 3}
   m_PrefabInstance: {fileID: 1280147164}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1904664423 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2955687806444789169, guid: 4d37ec368f8ef734a9a276be62b07e1c,
+    type: 3}
+  m_PrefabInstance: {fileID: 304510590}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1914597014
 PrefabInstance:
@@ -16527,25 +16554,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelPack
       objectReference: {fileID: 0}
-    - target: {fileID: 7989403737067288805, guid: 6cc14dbcf2edd6e4ba122b912b452674,
-        type: 3}
-      propertyPath: LevelToLoad
-      value: Level_Select
-      objectReference: {fileID: 0}
     - target: {fileID: 7989403737262310786, guid: 6cc14dbcf2edd6e4ba122b912b452674,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8239410425409247888, guid: 6cc14dbcf2edd6e4ba122b912b452674,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 8239410425409247888, guid: 6cc14dbcf2edd6e4ba122b912b452674,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -3.85
       objectReference: {fileID: 0}
     - target: {fileID: 9017023749158548168, guid: 6cc14dbcf2edd6e4ba122b912b452674,
         type: 3}

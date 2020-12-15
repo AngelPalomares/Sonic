@@ -306,6 +306,9 @@ MonoBehaviour:
   gemsCollected: 0
   LevelToLoad: Level_Select
   LevelMusic: 1
+  timeInLevel: 0
+  Lives: {fileID: 7989403737511099785}
+  counter: 3
 --- !u!1 &7989403737083056042
 GameObject:
   m_ObjectHideFlags: 0

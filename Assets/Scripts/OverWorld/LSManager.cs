@@ -8,6 +8,8 @@ public class LSManager : MonoBehaviour
     public static LSManager instance;
     public LS_Player theplayer;
 
+    private MapPoint[] allpoints;
+
     private void Awake()
     {
         instance = this;
@@ -15,7 +17,19 @@ public class LSManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        allpoints = FindObjectsOfType<MapPoint>();
+
+        if(PlayerPrefs.HasKey("CurrentLevel"))
+        { 
+            foreach(MapPoint point in allpoints)
+            {
+                if(point.leveltoload == PlayerPrefs.GetString("CurrentLevel"))
+                {
+                    theplayer.transform.position = point.transform.position;
+                    theplayer.currentPoint = point;
+                }
+            }
+        }
     }
 
     // Update is called once per frame
@@ -31,6 +45,7 @@ public class LSManager : MonoBehaviour
 
     public IEnumerator LoadLevelCo()
     {
+        AudioManager.instance.PlaySFX(4);
         LevelSelectUiCOntroller.instance.FadeT0oBlack();
 
         Debug.Log("Testing");

@@ -42,8 +42,7 @@ public class GemPickup : MonoBehaviour
                 Destroy(gameObject);
 
                 Instantiate(pickupEffect, transform.position, transform.rotation);
-
-                UIController.instance.addlife();
+                LivesTest.instance.addlife();
                 UIController.instance.UpdateGemCount();
                 AudioManager.instance.PlaySFX(6);
             }

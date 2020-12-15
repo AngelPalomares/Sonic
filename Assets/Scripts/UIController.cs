@@ -32,7 +32,7 @@ public class UIController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Lives.text = counter.ToString();
+        Lives.text = LivesTest.instance.counter.ToString();
         UpdateGemCount();
         FadeFromBlack();
     }
@@ -104,21 +104,6 @@ public class UIController : MonoBehaviour
                 heart3.sprite = emptyheart;
                 break;
 
-        }
-    }
-
-    public void Livess()
-    {
-        counter--;
-        Lives.text = counter.ToString();
-    }
-
-    public void addlife()
-    {
-        if(LevelManager.instance.gemsCollected == 25 || LevelManager.instance.gemsCollected == 50)
-        {
-            counter++;
-            Lives.text = counter.ToString();
         }
     }
 

@@ -27,11 +27,11 @@ public class LS_Player : MonoBehaviour
         if (Vector3.Distance(transform.position, currentPoint.transform.position) < .1f && !LevelLoading)
         {
 
-
             if (Input.GetAxisRaw("Horizontal") > .5f)
             {
                 if (currentPoint.right != null)
                 {
+                    AudioManager.instance.PlaySFX(5);
                     SetNextPoint(currentPoint.right);
                 }
             }
@@ -40,6 +40,7 @@ public class LS_Player : MonoBehaviour
             {
                 if (currentPoint.left != null)
                 {
+                    AudioManager.instance.PlaySFX(5);
                     SetNextPoint(currentPoint.left);
                 }
             }
@@ -48,14 +49,17 @@ public class LS_Player : MonoBehaviour
             {
                 if (currentPoint.up != null)
                 {
+                    AudioManager.instance.PlaySFX(5);
                     SetNextPoint(currentPoint.up);
                 }
             }
 
             if (Input.GetAxisRaw("Vertical") < -.5f)
             {
+                
                 if (currentPoint.down != null)
                 {
+                    AudioManager.instance.PlaySFX(5);
                     SetNextPoint(currentPoint.down);
                 }
             }

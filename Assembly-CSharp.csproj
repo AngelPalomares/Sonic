@@ -75,6 +75,7 @@
     <Compile Include="Assets\Scripts\KillPlane.cs" />
     <Compile Include="Assets\Scripts\LevelExit.cs" />
     <Compile Include="Assets\Scripts\LevelManager.cs" />
+    <Compile Include="Assets\Scripts\LivesTest.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\OverWorld\LSCameraController.cs" />
     <Compile Include="Assets\Scripts\OverWorld\LSManager.cs" />

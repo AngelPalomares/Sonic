@@ -27,7 +27,7 @@ public class StompBox : MonoBehaviour
     //stompbox is used to destroy enemies
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Enemy")
+        if(collision.tag == "Frog")
         {
             Debug.Log("Bonk");
 
@@ -40,6 +40,23 @@ public class StompBox : MonoBehaviour
             float dropSelect = Random.Range(0, 100f);
 
             if(dropSelect <= chanceToDrop)
+            {
+                Instantiate(collectible, collision.transform.position, collision.transform.rotation);
+            }
+
+            AudioManager.instance.PlaySFX(Audio);
+        }
+        else if(collision.tag == "Eagle")
+        {
+            FlyingEnemyController.instance.health--;
+
+            Instantiate(deatheffect, collision.transform.position, collision.transform.rotation);
+
+            PlayerController.instance.Bounce();
+
+            float dropSelect = Random.Range(0, 100f);
+
+            if (dropSelect <= chanceToDrop)
             {
                 Instantiate(collectible, collision.transform.position, collision.transform.rotation);
             }

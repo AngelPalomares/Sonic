@@ -104,7 +104,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1938918419
-  m_SortingLayer: 1
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_Sprite: {fileID: 7815371044791450175, guid: d0ff653f4b4d3f14dab1926a9ed3efb6,
     type: 3}
@@ -172,15 +172,18 @@ MonoBehaviour:
   theRB: {fileID: 2069496930763380473}
   JumpForce: 11
   distance: 0
+  isGrounded: 0
   groundCheck: {fileID: 2069496929536921223}
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 2304
   WhatIsLadder:
     serializedVersion: 2
     m_Bits: 1024
   knockbackLength: 0.25
   knockForce: 5
+  bounceForce: 0
+  StopInput: 0
 --- !u!95 &2069496930763380471
 Animator:
   serializedVersion: 3
@@ -215,3 +218,4 @@ MonoBehaviour:
   MaxHealth: 6
   CurrentHealth: 0
   invincibleLength: 1
+  deathEffect: {fileID: 0}

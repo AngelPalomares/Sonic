@@ -81,14 +81,22 @@ public class PlayerController : MonoBehaviour
                 {
                     if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
                     {
+                        anim.SetBool("MovingClimb", false);
                         isClimbing = true;
                         anim.SetBool("isClimbing", isClimbing);
                     }
+                    else if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow))
+                    {
+                        anim.SetBool("MovingClimb", true);
+                    }
+
+
                 }
 
                 //If climbing is true allow the player to climb up stairs
                 if (isClimbing == true)
                 {
+                     
                     GetComponent<Rigidbody2D>().gravityScale = 0.0f;
                     theRB.velocity = new Vector2(theRB.velocity.x, climbSpeed * Input.GetAxis("Vertical"));
                     if (isClimbing == true && isGrounded)
